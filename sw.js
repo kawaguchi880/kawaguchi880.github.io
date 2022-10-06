@@ -5,6 +5,7 @@ var CACHE_NAME = 'pwa-sample-caches';
 var urlsToCache = [
   '/PWA_TEST/',
   '/PWA_TEST/css/common.css',
+  '/PWA_TEST/js/alarm.js'
 ];
 
 // インストール処理
