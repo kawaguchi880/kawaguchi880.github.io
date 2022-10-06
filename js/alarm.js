@@ -40,7 +40,7 @@ set_btn.addEventListener('click', function () {
 
   //設定時間を表示
   let container_list = document.createElement('li');
-  container_list.className = 'list-group-item list-group-item-info'
+  container_list.className = 'list-group-item'
   let list_content = document.createTextNode(`${record[x].sethour}時${record[x].setminute}分`);
   parent_list.appendChild(container_list);
   container_list.appendChild(list_content);

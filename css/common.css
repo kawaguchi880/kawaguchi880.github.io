@@ -1,10 +1,12 @@
 body {
   font-family: Arial, 'メイリオ', sans-serif;
   text-align: center;
+  background: color #f4f5f7;;
 }
 #timerText {
   color: #00aaff;
   margin: 30px auto;
+  font-size: 50px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
