@@ -83,6 +83,7 @@ function updateCurrentTime() {
     for (var i = 0, len = record.length; i < len; i++) {
       if (record[i].sethour == currentDate.getHours() && record[i].setminute == currentDate.getMinutes() && seconds == 0) {
         alert('The time is now!');
+        // アラームが起動したときの処理
       };
     };
     updateCurrentTime();
