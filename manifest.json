@@ -1,6 +1,6 @@
 {
 	"short_name": "プロジェクト演習アプリ",
-	"name": "目是ましWeather",
+	"name": "プロジェクト演習アプリ",
 	"display": "standalone",
 	"start_url": "index.html",
 	"icons": [
