@@ -11,6 +11,7 @@ let option_minutes;
 let parent_list = document.getElementById('parent_list');
 let record = []; //アラーム設定格納
 let x = 0; // 計算用の変数
+let test_btn = document.getElementById('test_btn');
 
 //アラーム設定用オブジェクト
 let Setting = function (sethour, setminute) {
@@ -25,7 +26,14 @@ function adjustDigit(num) {
   else { digit = num; }
   return digit;
 }
-
+test_btn.addEventListener("click", () => {
+  Notification.requestPermission().then(permission => {
+    if (permission === "granted") {
+      console.log("The user accepted");
+    }
+  });
+  const notification = new Notification("Hello World!");
+});
 // アラームセット
 set_btn.addEventListener('click', function () {
   //アラームは最大5まで
@@ -83,7 +91,6 @@ function updateCurrentTime() {
     for (var i = 0, len = record.length; i < len; i++) {
       if (record[i].sethour == currentDate.getHours() && record[i].setminute == currentDate.getMinutes() && seconds == 0) {
         // アラームが起動したときの処理
-
       };
     };
     updateCurrentTime();
