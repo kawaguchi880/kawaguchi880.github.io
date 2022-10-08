@@ -34,8 +34,10 @@ function adjustDigit(num) {
   else { digit = num; }
   return digit;
 }
+// 通知許可
 test_btn.addEventListener("click", () => {
   Notification.requestPermission().then(permission => {
+    alert(permission)
     if (permission === "granted") {
       const notification = new Notification(title, options);
     }
