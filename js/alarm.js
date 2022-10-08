@@ -13,6 +13,14 @@ let record = []; //アラーム設定格納
 let x = 0; // 計算用の変数
 let test_btn = document.getElementById('test_btn');
 
+const title = "見出し"
+const options = {
+  body: '本文',
+  icon: 'アイコン画像',
+  data: {
+    foo: '任意のデータ'
+  }
+};
 //アラーム設定用オブジェクト
 let Setting = function (sethour, setminute) {
   this.sethour = sethour;
@@ -29,7 +37,7 @@ function adjustDigit(num) {
 test_btn.addEventListener("click", () => {
   Notification.requestPermission().then(permission => {
     if (permission === "granted") {
-      const notification = new Notification("Hello World!");
+      const notification = new Notification(title, options);
     }
   });
 
