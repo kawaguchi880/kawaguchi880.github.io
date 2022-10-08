@@ -11,16 +11,7 @@ let option_minutes;
 let parent_list = document.getElementById('parent_list');
 let record = []; //アラーム設定格納
 let x = 0; // 計算用の変数
-let test_btn = document.getElementById('test_btn');
 
-const title = "見出し"
-const options = {
-  body: '本文',
-  icon: 'アイコン画像',
-  data: {
-    foo: '任意のデータ'
-  }
-};
 //アラーム設定用オブジェクト
 let Setting = function (sethour, setminute) {
   this.sethour = sethour;
@@ -34,16 +25,7 @@ function adjustDigit(num) {
   else { digit = num; }
   return digit;
 }
-// 通知許可
-test_btn.addEventListener("click", () => {
-  Notification.requestPermission().then(permission => {
-    alert(permission)
-    if (permission === "granted") {
-      const notification = new Notification(title, options);
-    }
-  });
 
-});
 // アラームセット
 set_btn.addEventListener('click', function () {
   //アラームは最大5まで

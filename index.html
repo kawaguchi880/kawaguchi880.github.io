@@ -129,7 +129,8 @@
     <ul id='messages'>
     </ul>
   </div>
-  <button id="test_btn">ボタン</button>
+  <button id="confirm">通知許可の確認</button>
+  <button id="send">通知を送信</button>
 
 
 
@@ -137,18 +138,54 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
-  <script>
-    // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(function (registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch(function (err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    }
-  </script>
   <script src="js/alarm.js"></script>
   <script src="weatherForcast.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => console.log('registered', registration))
+          .catch(error => console.log('error', error));
+      }
+    });
+
+    document
+      .getElementById('confirm')
+      .addEventListener('click', onClickConfirm);
+
+    document.getElementById('send').addEventListener('click', onClickSend);
+
+    function onClickConfirm() {
+      if (!('Notification' in window)) {
+        alert('このブラウザはプッシュ通知に対応してません。。。');
+        return;
+      }
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') alert('通知の許可がもらえました');
+        if (permission === 'denied') alert('通知の許可がもらえませんでした');
+      });
+    }
+
+    function onClickSend() {
+      if (!('Notification' in window)) {
+        alert('このブラウザはプッシュ通知に対応してません。。。');
+        return;
+      }
+
+      const permission = Notification.permission;
+      if (permission === 'granted') {
+        navigator.serviceWorker.ready.then(registration => {
+          registration.active.postMessage('hello!!!');
+        });
+      } else {
+        alert('通知の許可がもらえませんよ');
+      }
+    }
+  </script>
 </body>
+<!-- Notification.requestPermission().then(permission => {
+        alert(permission)
+      }); -->
 
 </html>
