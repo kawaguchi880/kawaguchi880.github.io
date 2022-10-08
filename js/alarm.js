@@ -29,9 +29,10 @@ function adjustDigit(num) {
 test_btn.addEventListener("click", () => {
   Notification.requestPermission().then(permission => {
     if (permission === "granted") {
-      randomNotification();
+      const notification = new Notification("Hello World!");
     }
   });
+
 });
 // アラームセット
 set_btn.addEventListener('click', function () {
