@@ -9,22 +9,22 @@ var urlsToCache = [
 ];
 
 // インストール処理
-self.addEventListener('install', function (event) {
+self.addEventListener('install', event => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then(function (cache) {
+      .then(cache => {
         return cache.addAll(urlsToCache);
       })
   );
 });
 
 // リソースフェッチ時のキャッシュロード処理
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', event => {
   event.respondWith(
     caches
       .match(event.request)
-      .then(function (response) {
+      .then(response => {
         return response ? response : fetch(event.request);
       })
   );
