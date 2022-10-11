@@ -84,7 +84,12 @@ function updateCurrentTime() {
     for (var i = 0, len = record.length; i < len; i++) {
       if (record[i].sethour == currentDate.getHours() && record[i].setminute == currentDate.getMinutes() && seconds == 0) {
         // アラームが起動したときの処理
-
+        const permission = Notification.permission;
+        if (permission === 'granted') {
+          navigator.serviceWorker.ready.then(registration => {
+            registration.active.postMessage('hello!!!');
+          });
+        }
       };
     };
     updateCurrentTime();
