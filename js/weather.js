@@ -1,5 +1,17 @@
 var API_KEY = 'c3a10042f63aca96d24e28df7e79d706';
 var defaultCity = 'Tokyo';
+
+// 更新ボタンの関数
+function butotnClick() {
+  let City = document.getElementById('city');
+  defaultCity = City.value;
+  console.log(defaultCity)
+  currentWeather();
+  threeWeather();
+}
+console.log(defaultCity)
+let checkButton = document.getElementById('checkButton');
+checkButton.addEventListener('click', butotnClick);
 //現在の天気を取得
 function currentWeather() {
   $.ajax({
@@ -9,7 +21,7 @@ function currentWeather() {
   })
     .done(function (data) {
       //呼び出した時の処理
-      // console.log(data);
+      console.log(data);
       getWeatherData(data);
       createDate(city.date);
       getDiscription(city.description);
@@ -29,6 +41,7 @@ function threeWeather() {
   })
     .done(function (data) {
       //呼び出した時の処理
+      console.log(data);
       var insertHTML = '';
       for (var i = 0; i <= 12; i++) {
         insertHTML += domThreeWeatherWrite(data, i);

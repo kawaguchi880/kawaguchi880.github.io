@@ -479,6 +479,7 @@ body {
 body {
   font-family: Arial, 'メイリオ', sans-serif;
   text-align: center;
+  background-color: rgb(36, 32, 32);
 }
 #timerText {
   color: #00aaff;
