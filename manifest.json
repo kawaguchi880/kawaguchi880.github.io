@@ -1,5 +1,5 @@
 {
-	"short_name": "プロジェクト演習アプリ",
+	"short_name": "プロジェクト演習",
 	"name": "プロジェクト演習アプリ",
 	"display": "standalone",
 	"start_url": "index.html",

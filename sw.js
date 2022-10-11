@@ -9,6 +9,7 @@ var urlsToCache = [
 ];
 
 // インストール処理
+// serviseworkerを新規インストール，もしくは更新されていると実行される
 self.addEventListener('install', event => {
   event.waitUntil(
     caches
@@ -19,7 +20,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// リソースフェッチ時のキャッシュロード処理
+// // リソースフェッチ時のキャッシュロード処理
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches
@@ -29,6 +30,7 @@ self.addEventListener('fetch', event => {
       })
   );
 });
+
 // notification message
 self.addEventListener('message', function (event) {
   console.log(event.data);

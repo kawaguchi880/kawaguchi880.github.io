@@ -12,6 +12,7 @@ let parent_list = document.getElementById('parent_list');
 let record = []; //アラーム設定格納
 let x = 0; // 計算用の変数
 
+
 //アラーム設定用オブジェクト
 let Setting = function (sethour, setminute) {
   this.sethour = sethour;
@@ -83,6 +84,7 @@ function updateCurrentTime() {
     for (var i = 0, len = record.length; i < len; i++) {
       if (record[i].sethour == currentDate.getHours() && record[i].setminute == currentDate.getMinutes() && seconds == 0) {
         // アラームが起動したときの処理
+
       };
     };
     updateCurrentTime();
